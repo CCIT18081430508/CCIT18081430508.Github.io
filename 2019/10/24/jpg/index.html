@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://ccit18081430508.github.io/2019/10/24/jpg/7.jpg">
 <meta property="og:image" content="http://ccit18081430508.github.io/2019/10/24/jpg/8.jpg">
 <meta property="og:image" content="http://ccit18081430508.github.io/2019/10/24/jpg/IMGL3158.jpg">
-<meta property="og:updated_time" content="2019-10-31T01:46:08.850Z">
+<meta property="og:updated_time" content="2019-10-31T02:03:46.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jpg">
 <meta name="twitter:description" content="Bluetooth 2019-2020学年第一学期无线传感技术与应用开发学习内容 （蓝牙芯片）一、首先再次课程需要用到StM32Cube软件和 IAR  Systems,需要把两个软件版本升级到最高版本，可以在stm官网下载最新版本。运行Cube，在help工具栏中找到About,这里可以显示此软件的版本号。Manage embedded software packages可以下载你所用到的固">
@@ -100,12 +100,12 @@
 
 <p>Bluetooth</p>
 <p>2019-2020学年第一学期无线传感技术与应用开发学习内容 （蓝牙芯片）<br>一、首先再次课程需要用到StM32Cube软件和 IAR  Systems,需要把两个软件版本升级到最高版本，可以在<a href="https://stmcu.com.cn" target="_blank" rel="noopener">stm官网</a>下载最新版本。运行Cube，在help工具栏中找到About,这里可以显示此软件的版本号。Manage embedded software packages可以下载你所用到的固件包。在我们课堂上用到的芯片类型是STM32F401RETx,也因此我需要下载STM32F4系列的最新版本1.24.1（最新版本），然后转换到STMicroelectronics下，下载X_CUBE_BLE1的4.4.0版本的固件包和X_CUBE_MEMS1的6.2.0固件包。当然你也可以在<a href="https://stmcu.com.cn" target="_blank" rel="noopener">stm官网</a>下载固件包。安装在STM32Cube/Repository/目录下（可以在help工具栏下的Updater Settings查看固件包下载路径）即可。<br>二、配置STM32CUBE蓝牙功能<br>1、打开cube，选择File工具栏下New project创建一新的工程，选择芯片STM32F401RETx<br>2、双击打开，即可显示出芯片<br>3、第一次课上只用到蓝牙功能，因此只配置蓝牙。在Additional Software中的STMicorelectronics.X_CUBE_BLE1分别展开隐藏的文件，Application中选择Beacon,HCI_TL选择Basic,HCI_TL_INTERFACE选择UserBoard，其余的打勾。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/1.png" alt="图片"><br>4、在System Core中配置SWD调试模式。选中SYS,Debug中选择Serial Wire。 使能该选项后，相应的IO引脚，会变为调试引脚，如下图所示。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/2.jpg" alt="图片"><br>5、在Connectivity中配置全双工模式和串口的异步模式。在SPI1的Mode中选择Full_Duplex Master(全双工模式)，在下方工具栏中选中Parameter Settings配置时钟参数，在Clock Parameters中将 Prescaler（预分频器）改为4；在USART1的Mode中选择Asynchronous(异步模式)。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/3.jpg" alt="图片"><br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/4.jpg" alt="图片"><br>6、首先在芯片的PC4引脚设置为GPIO_EXTI4,然后在System Core中选中GPIO,找到NVIC,将下面的EXTI line4 interrupt打勾。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/5.jpg" alt="图片"><br>7、在芯片PA4、PB1引脚均设为GPIO_Output。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/6.jpg" alt="图片"><br>8、点击Additional Software 下方的Microelectrontronics X_CUBE_BLE1.4.4.0, 然后把Wireless BlueNRG_MS和 Wireless Application都勾选上。然后在下方工具栏Platform Settings下方进行相关配置，将Exti line选中PC4;BUS IO driver选中SPI1;CS Line 选中PA4,Reset Linez 选中PB1;BSP USART选中USART1。芯片最终设置如图。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/7.jpg" alt="图片"><br>三、进行时钟设置<br>在Clock Configuration设置为如下图<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/8.jpg" alt="图片"><br>四、存储路径中不能出现中文字符</p>
-<p><img src="//CCIT18081430508.github.io/2019/10/24/jpg/IMGL3158.jpg" alt="颜诺萱"></p>
+<p><img src="//CCIT18081430508.github.io/2019/10/24/jpg/IMGL3158.jpg" alt="图片"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430508.github.io/2019/10/24/jpg/" data-id="ck2e1ss1o000594w09v69vo0j" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430508.github.io/2019/10/24/jpg/" data-id="ck2e2f7yq00059sw0ih0b9n1u" class="article-share-link">Share</a>
       
       
     </footer>
