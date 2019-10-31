@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://CCIT18081430508.github.io/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://CCIT18081430508.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-jpg" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/24/jpg/" class="article-date">
+  <time datetime="2019-10-24T10:30:17.000Z" itemprop="datePublished">2019-10-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/24/jpg/">jpg</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <meta name="referrer" content="no-referrer">
+
+<p>Bluetooth</p>
+<p>2019-2020学年第一学期无线传感技术与应用开发学习内容 （蓝牙芯片）<br>一、首先再次课程需要用到StM32Cube软件和 IAR  Systems,需要把两个软件版本升级到最高版本，可以在<a href="https://stmcu.com.cn" target="_blank" rel="noopener">stm官网</a>下载最新版本。运行Cube，在help工具栏中找到About,这里可以显示此软件的版本号。Manage embedded software packages可以下载你所用到的固件包。在我们课堂上用到的芯片类型是STM32F401RETx,也因此我需要下载STM32F4系列的最新版本1.24.1（最新版本），然后转换到STMicroelectronics下，下载X_CUBE_BLE1的4.4.0版本的固件包和X_CUBE_MEMS1的6.2.0固件包。当然你也可以在<a href="https://stmcu.com.cn" target="_blank" rel="noopener">stm官网</a>下载固件包。安装在STM32Cube/Repository/目录下（可以在help工具栏下的Updater Settings查看固件包下载路径）即可。<br>二、配置STM32CUBE蓝牙功能<br>1、打开cube，选择File工具栏下New project创建一新的工程，选择芯片STM32F401RETx<br>2、双击打开，即可显示出芯片<br>3、第一次课上只用到蓝牙功能，因此只配置蓝牙。在Additional Software中的STMicorelectronics.X_CUBE_BLE1分别展开隐藏的文件，Application中选择Beacon,HCI_TL选择Basic,HCI_TL_INTERFACE选择UserBoard，其余的打勾。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/1.png" alt="图片"><br>4、在System Core中配置SWD调试模式。选中SYS,Debug中选择Serial Wire。 使能该选项后，相应的IO引脚，会变为调试引脚，如下图所示。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/2.jpg" alt="图片"><br>5、在Connectivity中配置全双工模式和串口的异步模式。在SPI1的Mode中选择Full_Duplex Master(全双工模式)，在下方工具栏中选中Parameter Settings配置时钟参数，在Clock Parameters中将 Prescaler（预分频器）改为4；在USART1的Mode中选择Asynchronous(异步模式)。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/3.jpg" alt="图片"><br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/4.jpg" alt="图片"><br>6、首先在芯片的PC4引脚设置为GPIO_EXTI4,然后在System Core中选中GPIO,找到NVIC,将下面的EXTI line4 interrupt打勾。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/5.jpg" alt="图片"><br>7、在芯片PA4、PB1引脚均设为GPIO_Output。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/6.jpg" alt="图片"><br>8、点击Additional Software 下方的Microelectrontronics X_CUBE_BLE1.4.4.0, 然后把Wireless BlueNRG_MS和 Wireless Application都勾选上。然后在下方工具栏Platform Settings下方进行相关配置，将Exti line选中PC4;BUS IO driver选中SPI1;CS Line 选中PA4,Reset Linez 选中PB1;BSP USART选中USART1。芯片最终设置如图。<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/7.jpg" alt="图片"><br>三、进行时钟设置<br>在Clock Configuration设置为如下图<br><img src="//CCIT18081430508.github.io/2019/10/24/jpg/8.jpg" alt="图片"><br>四、存储路径中不能出现中文字符</p>
+<img src="/2019/10/24/jpg/0.jpg" title="颜诺萱">
+<p><img src="//CCIT18081430508.github.io/2019/10/24/jpg/0.jpg" alt="图片"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://CCIT18081430508.github.io/2019/10/24/jpg/" data-id="ck2eiy28q0005hcw0e31h7m4f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-STM32-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/21/STM32-1/" class="article-date">
+  <time datetime="2019-10-21T02:16:14.000Z" itemprop="datePublished">2019-10-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/21/STM32-1/">STM32(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Bluetooth</p>
+<p>2019-2020学年第一学期无线传感技术与应用开发学习内容 （蓝牙芯片）<br>一、首先再次课程需要用到StM32Cube软件和 IAR  Systems,需要把两个软件版本升级到最高版本，可以在<a href="https://stmcu.com.cn" target="_blank" rel="noopener">stm官网</a>下载最新版本。运行Cube，在help工具栏中找到About,这里可以显示此软件的版本号。Manage embedded software packages可以下载你所用到的固件包。在我们课堂上用到的芯片类型是STM32F401RETx,也因此我需要下载STM32F4系列的最新版本1.24.1（最新版本），然后转换到STMicroelectronics下，下载X_CUBE_BLE1的4.4.0版本的固件包和X_CUBE_MEMS1的6.2.0固件包。当然你也可以在<a href="https://stmcu.com.cn" target="_blank" rel="noopener">stm官网</a>下载固件包。安装在STM32Cube/Repository/目录下（可以在help工具栏下的Updater Settings查看固件包下载路径）即可。<br>二、配置STM32CUBE蓝牙功能<br>1、打开cube，选择File工具栏下New project创建一新的工程，选择芯片STM32F401RETx<br>2、双击打开，即可显示出芯片<br>3、第一次课上只用到蓝牙功能，因此只配置蓝牙。在Additional Software中的STMicorelectronics.X_CUBE_BLE1分别展开隐藏的文件，Application中选择Beacon,HCI_TL选择Basic,HCI_TL_INTERFACE选择UserBoard，其余的打勾。<br><a href="images/1.png">1</a><br>4、在System Core中配置SWD调试模式。选中SYS,Debug中选择Serial Wire。 使能该选项后，相应的IO引脚，会变为调试引脚，如下图所示。<br><a href="images/2.png">2</a><br>5、在Connectivity中配置全双工模式和串口的异步模式。在SPI1的Mode中选择Full_Duplex Master(全双工模式)，在下方工具栏中选中Parameter Settings配置时钟参数，在Clock Parameters中将 Prescaler（预分频器）改为4；在USART1的Mode中选择Asynchronous(异步模式)。<br><a href="images/3.png">3</a><br><a href="images/4.png">4</a><br>6、首先在芯片的PC4引脚设置为GPIO_EXTI4,然后在System Core中选中GPIO,找到NVIC,将下面的EXTI line4 interrupt打勾。<br><a href="images/5.png">5</a><br>7、在芯片PA4、PB1引脚均设为GPIO_Output。<br><a href="images/6.png">6</a><br>8、点击Additional Software 下方的Microelectrontronics X_CUBE_BLE1.4.4.0, 然后把Wireless BlueNRG_MS和 Wireless Application都勾选上。然后在下方工具栏Platform Settings下方进行相关配置，将Exti line选中PC4;BUS IO driver选中SPI1;CS Line 选中PA4,Reset Linez 选中PB1;BSP USART选中USART1。芯片最终设置如图。<br><a href="images/7.png">7</a><br>三、进行时钟设置<br>在Clock Configuration设置为如下图<br><a href="images/8.png">8</a><br>四、存储路径中不能出现中文字符</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://CCIT18081430508.github.io/2019/10/21/STM32-1/" data-id="ck2eiy2870000hcw0l0ic2l39" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ccit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/17/ccit/" class="article-date">
+  <time datetime="2019-10-17T02:02:03.000Z" itemprop="datePublished">2019-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/17/ccit/">ccit</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##hello 你好<br>欢迎来到 <a href="http://www.ccit.js.cn/" target="_blank" rel="noopener">常州信息职业技术学院</a>！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://CCIT18081430508.github.io/2019/10/17/ccit/" data-id="ck2eiy28d0001hcw0g6emk3ea" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-helloccithello" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/11/helloccithello/" class="article-date">
+  <time datetime="2019-09-11T12:38:01.000Z" itemprop="datePublished">2019-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/11/helloccithello/">helloccithello</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>你好</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://CCIT18081430508.github.io/2019/09/11/helloccithello/" data-id="ck2eiy28f0002hcw0b0xbet0v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-helloccit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/11/helloccit/" class="article-date">
+  <time datetime="2019-09-11T12:33:32.000Z" itemprop="datePublished">2019-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/11/helloccit/">helloccit</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>你好</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://CCIT18081430508.github.io/2019/09/11/helloccit/" data-id="ck2eiy28h0003hcw0az7puzz4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/11/hello-world/" class="article-date">
+  <time datetime="2019-09-11T10:47:28.379Z" itemprop="datePublished">2019-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/11/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://CCIT18081430508.github.io/2019/09/11/hello-world/" data-id="ck2eiy28l0004hcw0ghmrfsqq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/24/jpg/">jpg</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/21/STM32-1/">STM32(1)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/17/ccit/">ccit</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/11/helloccithello/">helloccithello</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/11/helloccit/">helloccit</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
