@@ -62,6 +62,130 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/01/搭建个人博客/" class="article-date">
+  <time datetime="2019-11-01T01:20:02.000Z" itemprop="datePublished">2019-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/01/搭建个人博客/">搭建个人博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <meta name="referrer" content="no-referrer">
+##第一步 Hexo 搭建本地静态网页
+###一、Hexo 的环境配置——安装 Node.js
+1. 登录网址为 https://nodejs.org/en/download/；找到 Download 板块。
+2. 根据本机类型，选择相应的版本下载；计算机->右键->属性，看到下图可知本机是 64 位。
+![图片](搭建个人博客/0.png)
+因此，我这里做如下选择：
+![图片](搭建个人博客/1.png)
+3. 安装下载的 node-v10.16.3-x86 文件，一路 next，即可完成安装。注：nodejs 默认的安装中会包含环境变量的配置和 npm 工具的安装
+![图片](搭建个人博客/2.png)
+4. 检验是否安装成功：在“开始”菜单中输入 cmd，打开命令行窗口
+（1） 输入 node –v，若显示版本号，则 nodejs 安装成功；
+（2） 输入 npm -v，若显示版本号，则 npm 安装成功；
+![图片](搭建个人博客/3.png)
+5. Hexo 的环境配置已经全部完成。
+###二、Hexo 的安装
+1. 使用 npm 命令安装 Hexo 客户端，输入：npm install -g hexo-cli上图表示我们已经成功安装了 Hexo 客户端，且版本号为 2.0.0。
+![图片](搭建个人博客/4.png)
+2. 确定自己博客（撰写/更新）的文件夹在本机位置：可以在 D 盘新建一个 blog的文件夹，然后将命令行切换到这个目录下，可以使用下面方式：
+![图片](搭建个人博客/5.png)
+3. 将该文件夹初始化为 hexo 网页框架所在位置，输入 hexo init:不难发现，命令执行失败，因为它需要从 github 上下载程序，因此我们首先需要下载 Git 工具。
+![图片](搭建个人博客/6.png)
+4. 登录 git 的 windows 版本下载页面：https://git-scm.com/download/win。
+![图片](搭建个人博客/6.png)
+根据自己系统类型，选择性安装。我这里是安装 Git-2.23.0-32-bit 文件。
+![图片](搭建个人博客/7.png)
+在安装过程中有如下两个页面要注意选择，其他一路 Next
+![图片](搭建个人博客/8.png)
+![图片](搭建个人博客/9.png)
+5. 检测 git 工具是否安装成功：在新打开的 cmd 窗口输入 git 指令，如果出现下图，表明 git 安装成功。
+![图片](搭建个人博客/10.png)
+6. 切换到博客文件夹路径下面后，重新输入 hexo init，若出现下图，表明 blog 初始化成功。
+![图片](搭建个人博客/11.png)
+7. 生成 public 静态资源:输入 hexo g 注：g=generate 
+可以看到生成了很多.html 网页文件、png 和 git 图片文件等等。
+![图片](搭建个人博客/12.png)
+8. 启动本地服务器:输入 hexo s 注：s=server图中语句表示 Hexo 运行在上述网址上。
+![图片](搭建个人博客/13.png)
+9. 检查网站雏形：在浏览器输入 http://localhost:4000 ，即可查看通过 hexo 部署本地静态网页效果。很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一情况下是因为端口占用的缘故，因为 4000 这个端口太常见了此时我们 ctrl+c 停止服务器，接着输入“hexo server -p 端口号”来改变端口号。如果搭建成功，应该可在上述址上看到如下页面：
+![图片](搭建个人博客/14.png)
+###三、开写第一篇博客文章
+1. 上述网站中出现的 Hello World 文章其实在 blog\source\_posts 文件目录下默认创建的，因此我们可以直接在该文件目录下创建自己的博客内容。
+2. 新建第一篇博客文件。在 blog 文件下使用命令：hexo new 文件名。这样 hexo 就会帮我们在 blog\source\_posts 下自动生成制定名称的文件,后缀名为.md。用这个命令的好处是帮我们自动生成了时间。
+![图片](搭建个人博客/15.png)
+3. 打开、撰写、保存新文件： 可以使用 txt 操作，打开文件后输入以下内容：你好，并以 UTF-8 格式来保存。注意：有的文件后缀默认会省略掉，需要设置电脑的相关选项。
+![图片](搭建个人博客/16.png)
+刷新下网页即可看到如下页面
+![图片](搭建个人博客/17.png)
+4. 页面优化：如果我希望自己的页面上有ccit这篇博文的效果，则可以采用markdown 格式语法。例如，在上文中添加如下内容：
+![图片](搭建个人博客/18.png)
+生成页面如下如所示：
+![图片](搭建个人博客/19.png)
+第二步 搭建 Github 网页仓库
+1. 创建一个新的仓库：登录官网后，点击 标签后输入用户名、密码。然后创建一个新的仓库。注意，下图两个红色覆盖区域的名称要相同。最后点击“create repository”
+![图片](搭建个人博客/20.png)
+2. 完成后，可以点击该仓库，进入仓库的配置界面
+![图片](搭建个人博客/21.png)
+鼠标拖动纵向进度条到中央位置，发现如下消息：这时表明，我们新建的仓库被发布在了上述这个网页上。
+![图片](搭建个人博客/22.png)
+3. 登录上述网址，发现内容和该仓库中的 README.md 文件中的内容一模一样。
+###第三步 关联 Github 网页仓库和本地 Hexo 博客
+一、配置 SSH key（这个操作似乎只能在 git bash 中完成）
+为什么要配置这个呢？因为你提交代码肯定要拥有你的 github 权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用 ssh key 来解决本地和服务器的连接问题。
+1. 创建 ssh key: 第一条指令是查看本机中是否存在 ssh key；如果存在就可以直接使用；若不存在，则需要先生成。第二条指令就是用来生成 ssh key,输入：输入 ssh-keygen -t rsa -C “github 邮箱名称”
+![图片](搭建个人博客/23.png)
+然后连续 3 次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub 文件，记事本打开并复制里面的内容，打开你的 github 主页，进入个人设置 -> SSH and GPG keys -> New SSH key,将复制的内容粘贴至其中。最终设置成功如图
+![图片](搭建个人博客/24.png)
+2. 测试本机是否可以通过 ssh 连接到自己的 github 仓库。输入：ssh -T git@github.com # 注意邮箱地址不用改然后输入 yes看到这个信息说明 SSH 已配置成功！
+![图片](搭建个人博客/25.png)
+3. 修改 blog\_config.yml 文件，将最后一部分修改为如下内容
+deploy:  
+type: git
+repo: git@github.com:用户名/用户名.github.io.git 
+branch: master        注意修改内容的空格和缩进；
+![图片](搭建个人博客/26.png)
+4. 安装一个用于关联 hexo 和 git 的小插件： npm install hexo-deployer-git –save
+![图片](搭建个人博客/27.png)
+5. 将 hexo 部署至自己的 github 仓库上：输入 hexo d 指令 注：d-deoly。
+![图片](搭建个人博客/28.png)
+6. 根据错误提示消息，输入两条 git 的配置指令：
+![图片](搭建个人博客/29.png)
+7. 在浏览器中输入我们的仓库地址，发现网页更新为本地的静态网页，同时仓库中多了很多文件。但这时候发现只有我们的第一篇默认的 hello world 博文！因为我们新建的那篇 helloccit 文件没有使用命令生成静态资源！
+8. 最后输入
+(1) hexo g
+(2) hexo d
+第一条指令的作用是更新 public 下的 index 文件。第二条指令是再次部署
+![图片](搭建个人博客/30.png)
+9. 在浏览器中输入自己的 github 仓库网址（见第二部的第 2 小步中的图片）https://用户名.github.io
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://CCIT18081430508.github.io/2019/11/01/搭建个人博客/" data-id="ck2jtmyw500066sw0hisr3n8g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-jpg" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/24/jpg/" class="article-date">
@@ -94,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430508.github.io/2019/10/24/jpg/" data-id="ck2ej7kex0005lkw0at1ixap2" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430508.github.io/2019/10/24/jpg/" data-id="ck2jtmyvw00046sw05d2lpvnf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430508.github.io/2019/10/21/STM32-1/" data-id="ck2ej7kej0000lkw0lmo8jc56" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430508.github.io/2019/10/21/STM32-1/" data-id="ck2jtmyvg00006sw0ipi5oil6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430508.github.io/2019/10/17/ccit/" data-id="ck2ej7kep0001lkw0ckj59r22" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430508.github.io/2019/10/17/ccit/" data-id="ck2jtmyvm00016sw0ory0ujh7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430508.github.io/2019/09/11/helloccithello/" data-id="ck2ej7kev0004lkw0wrho7pzs" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430508.github.io/2019/09/11/helloccithello/" data-id="ck2jtmyvs00036sw07llknret" class="article-share-link">Share</a>
       
       
     </footer>
@@ -243,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430508.github.io/2019/09/11/helloccit/" data-id="ck2ej7keu0003lkw0ss1r7rw9" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430508.github.io/2019/09/11/helloccit/" data-id="ck2jtmyvo00026sw0u17ebvhk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430508.github.io/2019/09/11/hello-world/" data-id="ck2ej7ker0002lkw0smt7eqv8" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430508.github.io/2019/09/11/hello-world/" data-id="ck2jtmyw000056sw0uehjll8i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -320,7 +444,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -331,6 +455,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/11/01/搭建个人博客/">搭建个人博客</a>
+          </li>
         
           <li>
             <a href="/2019/10/24/jpg/">jpg</a>
@@ -346,10 +474,6 @@
         
           <li>
             <a href="/2019/09/11/helloccithello/">helloccithello</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/11/helloccit/">helloccit</a>
           </li>
         
       </ul>
