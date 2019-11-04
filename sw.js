@@ -10,7 +10,7 @@
 
 'use strict';
 
-var precacheConfig = [["/index.html","7e084d158c1395f1c0c28482b08b9045"]];
+var precacheConfig = [];
 var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
 var firstRegister = 1; // 默认1是首次安装SW， 0是SW更新
 
@@ -286,7 +286,7 @@ self.addEventListener('activate', function (event) {
 
 // Runtime cache 配置转换后的 toolbox 代码.
 
-toolbox.router.get("/**/*", toolbox.cacheFirst, {"origin":"io-oi.me"});
+toolbox.router.get("/**/*", toolbox.cacheFirst, {"origin":"http://CCIT18081430508.github.io"});
 
 
 
